@@ -1,4 +1,5 @@
 <script>
+    import {fade} from 'svelte/transition';
     import {onMount} from "svelte";
 
     /**
@@ -8,7 +9,11 @@
     const proxy = 'https://cors-anywhere.herokuapp.com/';
 
 
+    let visible = false;
+
     let temperature = 0.0;
+
+    let stateImage = '';
 
 
     const _fetch = async (url) => {
@@ -31,7 +36,8 @@
 
 
     const getLatestWeatherDataByWoeidApi = (woeid) => {
-        return `${proxy}https://www.metaweather.com/api/location/${woeid}/2019/7/2/`
+        const date = new Date;
+        return `${proxy}https://www.metaweather.com/api/location/${woeid}/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}/`
     };
 
     const getLatestWeatherDataByWoeid = async (woeid) => {
@@ -40,6 +46,11 @@
         if (Array.isArray(data) && data.length) {
             return data[0];
         }
+    };
+
+
+    const updateStateImage = (state) => {
+        stateImage = `https://www.metaweather.com/static/img/weather/${state}.svg`;
     };
 
 
@@ -52,8 +63,14 @@
                     const data = await getLatestWeatherDataByWoeid(city.woeid);
 
                     if (data.hasOwnProperty('the_temp')) {
-                        temperature = data.the_temp;
+                        temperature = Math.round(data.the_temp);
                     }
+
+                    if (data.hasOwnProperty('weather_state_abbr')) {
+                        updateStateImage(data.weather_state_abbr);
+                    }
+
+                    visible = !visible;
                 }
             });
         } else {
@@ -62,5 +79,17 @@
     });
 </script>
 
+<style>
+    img {
+        width: 1.5rem;
+    }
+</style>
 
-<h4>{temperature}</h4>
+
+{#if visible}
+    <h4 transition:fade="{{ duration: 300 }}">
+        {temperature}
+        <small>&#176;&#67;</small>
+        <img src={stateImage} alt="">
+    </h4>
+{/if}
