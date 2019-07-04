@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
-    "name": "Borderify",
+    "name": "tafo",
     "version": "1.0",
-    "description": "Adds a red border to webpages matching about:newtab.",
+    "description": "Newtab functionality.",
     "icons": {
         "48": "icons/border-48.png"
     },
