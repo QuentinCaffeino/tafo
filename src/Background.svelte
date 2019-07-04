@@ -1,12 +1,33 @@
 <script>
+    import {fade} from 'svelte/transition';
+
+
+    let visible = false;
+
     let windowWidth = window.innerWidth;
+
     let windowHeight = window.innerHeight;
+
+    let imageUrl = '';
+
 
     const getImageUrl = (width, height) => {
         return `https://picsum.photos/${width}/${height}`;
     };
 
-    const imageUrl = getImageUrl(windowWidth, windowHeight);
+
+    const updateImage = (src) => {
+        const img = new Image();
+
+        img.onload = function () {
+            visible = !visible;
+        };
+
+        img.src = src;
+    };
+
+    imageUrl = getImageUrl(windowWidth, windowHeight);
+    updateImage(imageUrl);
 </script>
 
 <style lang="sass">
@@ -24,4 +45,7 @@
 </style>
 
 
-<div class="image" style="background-image: url({imageUrl})"></div>
+{#if visible}
+    <div class="image" style="background-image: url({imageUrl})"
+         transition:fade="{{ duration: 300 }}"></div>
+{/if}
