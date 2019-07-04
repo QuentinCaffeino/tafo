@@ -1,6 +1,6 @@
 <script>
     import Column from "./Column/Column.svelte";
-    import Quote from "./Blocks/Quote.svelte";
+    import Quote from "./CustomBlocks/Quote.svelte";
     import Clock from "./Blocks/Clock.svelte";
     import Weather from "./Blocks/Weather.svelte";
 </script>
@@ -12,13 +12,14 @@
     }
 
     .horizontally-centered {
-        position: absolute;
+        position: relative;
         top: 50%;
         transform: translateY(-50%);
     }
 
-    .float-right {
-        right: 0;
+    .flr {
+        float: right;
+        transform: translateY(-50%);
     }
 </style>
 
@@ -26,14 +27,21 @@
 <div class="container">
     <div class="row">
         <Column>
-            <div class="horizontally-centered">
+            <div class="row horizontally-centered">
                 <Quote></Quote>
             </div>
         </Column>
+
         <Column>
-            <div class="horizontally-centered float-right">
-                <Clock></Clock>
-                <Weather></Weather>
+            <div class="horizontally-centered">
+                <div class="flr">
+                    <div class="row col-12">
+                        <Clock></Clock>
+                    </div>
+                    <div class="row col-12">
+                        <Weather></Weather>
+                    </div>
+                </div>
             </div>
         </Column>
     </div>
