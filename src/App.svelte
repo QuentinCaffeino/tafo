@@ -1,6 +1,7 @@
 <script>
-    import Background from "./Container/Background.svelte";
+    import Panel from "./Panel/Panel.svelte";
     import Container from "./Container/Container.svelte";
+    import Background from "./Container/Background.svelte";
 </script>
 
 <style lang="sass">
@@ -16,6 +17,7 @@
 
 
 <main>
+    <Panel></Panel>
     <Container></Container>
     <Background></Background>
 </main>
