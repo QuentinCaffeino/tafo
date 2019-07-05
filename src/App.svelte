@@ -1,6 +1,6 @@
 <script>
-    import Background from "./Background.svelte";
-    import Container from "./Container.svelte";
+    import Background from "./Container/Background.svelte";
+    import Container from "./Container/Container.svelte";
 </script>
 
 <style lang="sass">
