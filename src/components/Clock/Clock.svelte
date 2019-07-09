@@ -1,17 +1,12 @@
 <script>
     import format from "date-fns/format";
-    import { time } from './ClockStore.js';
+    import {time, twelveHourFormatToggle, formatter} from './ClockStore.js';
     
 
-    let twelveHourFormat = true;
-    $: formatter = new Intl.DateTimeFormat('en', {
-        hour12: twelveHourFormat,
-        hour: 'numeric',
-        minute: '2-digit'
-    });
-
+    let _twelveHourFormat = true;
     const toggleTwelveHourFormat = () => {
-        twelveHourFormat = !twelveHourFormat
+        _twelveHourFormat = !_twelveHourFormat
+        twelveHourFormatToggle.set(_twelveHourFormat)
     };
 </script>
 
@@ -23,5 +18,5 @@
 
 
 <div class="clock" on:click={toggleTwelveHourFormat}>
-    <h1 class="display-1">{formatter.format($time)}</h1>
+    <h1 class="display-1">{$formatter.format($time)}</h1>
 </div>
