@@ -1,4 +1,4 @@
-import { writable, readable, derived } from 'svelte/store';
+import {derived, readable} from 'svelte/store';
 
 
 const getImageUrl = (width, height) => {
@@ -6,9 +6,9 @@ const getImageUrl = (width, height) => {
 };
 
 
-export const windowWidth = readable(window.innerWidth);
+export const windowWidth = readable(window.innerWidth, set => {});
 
-export const windowHeight = readable(window.innerHeight);
+export const windowHeight = readable(window.innerHeight, set => {});
 
 
 export const image = derived([windowWidth, windowHeight], ([$windowWidth, $windowHeight], set) => {
