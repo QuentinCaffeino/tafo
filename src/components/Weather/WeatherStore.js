@@ -28,8 +28,8 @@ export const closestCity = readable({}, set => {
 
     if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(async (position) => {
-            const city = await searchClosestCity(position.coords.latitude, position.coords.longitude);
-            set(city);
+            searchClosestCity(position.coords.latitude, position.coords.longitude)
+                .then(set)
         });
     } else {
         console.info('Geolocation API is disabled or isn\'t supported. No weather then. :(');
