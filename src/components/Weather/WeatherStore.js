@@ -1,4 +1,5 @@
 import {derived, readable, writable} from 'svelte/store';
+import {ImmortalDB} from 'immortal-db';
 
 
 /**
@@ -60,7 +61,17 @@ export const closestCityWeatherData = derived(closestCity, (() => {
 })());
 
 
+const temperatureUnitKey = 'tafo.weather.temperatureUnitKey';
+
 export const temperatureUnit = writable(0);
+
+ImmortalDB.get(temperatureUnitKey, 0)
+    .then(data => temperatureUnit.set(+data))
+
+temperatureUnit.subscribe($temperatureUnit => {
+    ImmortalDB.set(temperatureUnitKey, $temperatureUnit)
+});
+
 
 const temperatureUnitCalculator = derived(temperatureUnit, (() => {
     const def = {
