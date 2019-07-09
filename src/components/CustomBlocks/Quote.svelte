@@ -10,13 +10,11 @@
 
 
     fetch(api)
-            .then(response => {
-                response.json()
-                        .then(data => {
-                            quoteText = data.slip.advice;
-                            visible = !visible;
-                        })
-            });
+        .then(async response => {
+            const data = await response.json();
+            quoteText = data.slip.advice;
+            visible = true;
+        });
 </script>
 
 

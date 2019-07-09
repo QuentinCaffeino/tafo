@@ -1,7 +1,7 @@
 <style>
     div {
         /*TODO: Add media for smaller screens so blocks aren't 100vh*/
-        height: 100vh;
+        height: calc(100vh - var(--panel-height));
     }
 </style>
 

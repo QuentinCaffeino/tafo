@@ -9,6 +9,7 @@
     "rollup-plugin-css-bundle": "^1.0.4",
     "rollup-plugin-node-resolve": "^4.2.3",
     "rollup-plugin-sass": "^1.2.2",
+    "rollup-plugin-sizes": "^0.5.1",
     "rollup-plugin-svelte": "^5.0.3",
     "rollup-plugin-terser": "^4.0.4",
     "svelte": "^3.0.0",
@@ -18,14 +19,16 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "date-fns": "^1.30.1",
-    "material-components-web": "^3.0.0"
+    "material-components-web": "^3.0.0",
+    "redux": "^4.0.1"
   },
   "scripts": {
     "clear": "rm public/app.*",
     "build": "rollup -c",
     "watch": "rollup -c -w",
-    "dev": "run-p dev-firefox",
-    "dev-firefox": "run-p run-firefox watch",
-    "run-firefox": "web-ext -s public/ run"
+    "dev": "run-p firefox:dev",
+    "firefox": "yarn firefox:run",
+    "firefox:run": "web-ext -s public/ run",
+    "firefox:dev": "run-p --race firefox:run watch"
   }
 }

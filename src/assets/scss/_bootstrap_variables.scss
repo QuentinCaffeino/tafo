@@ -1,0 +1,16 @@
+@import "../../../node_modules/bootstrap/scss/variables";
+
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-responsive-font-sizes: true;
+
+
+// Body
+//
+// Settings for the `<body>` element.
+
+$body-bg: $black;
+$body-color: $gray-100;

@@ -5,6 +5,7 @@ import cssBundle from 'rollup-plugin-css-bundle';
 import sass from 'rollup-plugin-sass';
 import {terser} from 'rollup-plugin-terser';
 import {sass as svetleSass} from 'svelte-preprocess-sass';
+import sizes from 'rollup-plugin-sizes';
 
 
 const production = !process.env.ROLLUP_WATCH;
@@ -53,10 +54,13 @@ export default [
 
             // If we're building for production (npm run build
             // instead of npm run dev), minify
-            production && terser()
+            production && terser(),
+
+            production && sizes()
         ],
         watch: {
             clearScreen: false,
+            include: 'src/**/*'
         }
     }
 ];

@@ -1,0 +1,24 @@
+// ### Bootstrap ###
+// Required
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "bootstrap_variables";
+@import "../../../node_modules/bootstrap/scss/mixins";
+// Optional
+@import "../../../node_modules/bootstrap/scss/reboot";
+@import "../../../node_modules/bootstrap/scss/type";
+@import "../../../node_modules/bootstrap/scss/images";
+@import "../../../node_modules/bootstrap/scss/code";
+@import "../../../node_modules/bootstrap/scss/grid";
+// Other
+@import "../../../node_modules/bootstrap/scss/utilities/shadows";
+@import "../../../node_modules/bootstrap/scss/utilities/borders";
+@import "../../../node_modules/bootstrap/scss/utilities/background";
+@import "../../../node_modules/bootstrap/scss/utilities/text";
+@import "../../../node_modules/bootstrap/scss/utilities/spacing";
+@import "../../../node_modules/bootstrap/scss/utilities/sizing";
+
+// ### Material ###
+//@import "~@material/card/mdc-card";
+
+// ### Project ###
+@import "panel";
